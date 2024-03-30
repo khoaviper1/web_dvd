@@ -30,11 +30,13 @@ function connectdb() {
     //$conn = new mysqli('localhost', 'root', '', 'web_dvdrental');
     
     // Config này cho Triết
-    $conn = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
+    // $conn = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
+    $conn = new mysqli('127.0.0.1', 'root', '', 'DVD_WEBRENTAL');
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
     return $conn;
+    echo $conn->connect_error;
 }
 
 function getUserInformation($username) {
