@@ -2,7 +2,8 @@ services:
   php-env:
     build: .
     volumes:
-      - ./src:/var/www/myproject
+      - ./src:/var/www/html
+      - ./my-php-app.conf:/etc/apache2/sites-available/my-php-app.conf
     ports:
       - "9000:80"
     environment:
@@ -10,3 +11,6 @@ services:
       DB_NAME: dvd_web
       DB_USER: admin
       DB_PASSWORD: 0333342584
+networks:
+  app-network:
+    driver: bridge

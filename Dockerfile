@@ -7,9 +7,13 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 # Sao chép mã nguồn ứng dụng vào thư mục làm việc
 COPY . /var/www/html
+# Copy file cấu hình Apache
+COPY my-php-app.conf /etc/apache2/sites-available/
 
-# Thêm chỉ thị ServerName vào cấu hình Apache
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+# Kích hoạt site và module rewrite
+RUN a2ensite my-php-app.conf \
+    && a2enmod rewrite \
+    && a2dissite 000-default.conf
 
 # Kích hoạt các module Apache cần thiết
 RUN a2enmod rewrite
@@ -22,3 +26,4 @@ CMD ["apache2-foreground"]
 # Thiết lập quyền sở hữu và quyền truy cập nếu cần thiết
 RUN sudo chown -R www-data:www-data /var/www/html
 RUN sudo chmod -R 777 /var/www/html
+CMD ["apache2-foreground"]
