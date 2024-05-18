@@ -6,7 +6,7 @@ RUN apt-get update -y && apt-get install -y libmariadb-dev
 RUN docker-php-ext-install pdo pdo_mysql
 
 # Sao chép mã nguồn ứng dụng vào thư mục làm việc
-COPY . /var/www/myproject
+COPY . /var/www/html
 
 # Thêm chỉ thị ServerName vào cấu hình Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
