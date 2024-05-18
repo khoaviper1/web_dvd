@@ -20,5 +20,5 @@ EXPOSE 80
 CMD ["apache2-foreground"]
 
 # Thiết lập quyền sở hữu và quyền truy cập nếu cần thiết
-RUN chown -R www-data:www-data /var/www/myproject
-RUN chmod -R 777 /var/www/myproject
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 777 /var/www/html
