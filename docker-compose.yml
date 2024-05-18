@@ -1,8 +1,8 @@
 services:
   php-env:
-    image: php:8.1.2-apache
+    build: .
     volumes:
-      - ./src:/var/www/html
+      - ./src:/var/www/myproject
     ports:
       - "9000:80"
     environment:
