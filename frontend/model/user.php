@@ -5,7 +5,7 @@ function checkuser($username, $password){
    
     
     // Sử dụng prepared statement để tránh SQL injection
-    $stmt = $conn->prepare("SELECT * FROM user WHERE (account=? OR email=?) AND password=?");
+    $stmt = $conn->prepare("SELECT * FROM USER WHERE (account=? OR email=?) AND password=?");
     $stmt->bind_param("sss", $username, $username, $password);
     $stmt->execute();
 

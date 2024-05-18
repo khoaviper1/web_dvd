@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  php-env:
+    image: php:8.1.2-apache
+    volumes:
+      - ./src:/var/www/myproject
+    ports:
+      - "9000:80"
+    environment:
+      DB_HOST: database-1.c1vao1bbmxs8.us-west-2.rds.amazonaws.com
+      DB_NAME: dvd_web
+      DB_USER: admin
+      DB_PASSWORD: 0333342584
